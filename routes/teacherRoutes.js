@@ -8,6 +8,6 @@ router
   .get(teacherController.getAllTeachers)
   .post(teacherController.createTeacher);
 
-router.route("/:teacherId").get(teacherController.getTeacher);
+router.route("/:id").get(teacherController.getTeacher);
 
 module.exports = router;
