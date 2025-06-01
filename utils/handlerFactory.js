@@ -35,3 +35,16 @@ exports.getOne = (Model) =>
       data,
     });
   });
+
+exports.updateOne = (Model) =>
+  catchAsync(async (req, res, next) => {
+    const data = await Model.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    return res.status(200).json({
+      status: "success",
+      data,
+    });
+  });

@@ -24,4 +24,19 @@ const classroomSchema = new mongoose.Schema({
   ],
 });
 
+classroomSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "teacher",
+  });
+  next();
+});
+
+classroomSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "students",
+    select: "-__v -classroom -createdAt",
+  });
+  next();
+});
+
 module.exports = mongoose.model("Classroom", classroomSchema);
