@@ -5,3 +5,4 @@ const handlerFactory = require("../utils/handlerFactory");
 exports.getUsers = handlerFactory.getAll(User);
 exports.getOneUser = handlerFactory.getOne(User);
 exports.createUser = handlerFactory.createOne(User);
+exports.deleteUser = handlerFactory.deleteOne(User);

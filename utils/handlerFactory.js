@@ -46,3 +46,13 @@ exports.updateOne = (Model) =>
       data,
     });
   });
+
+exports.deleteOne = (Model) =>
+  catchAsync(async (req, res, next) => {
+    await Model.findByIdAndDelete(req.params.id);
+
+    return res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  });
