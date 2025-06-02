@@ -11,6 +11,7 @@ router
 router
   .route("/:id")
   .get(teacherController.getTeacher)
+  .patch(teacherController.updateTeacher)
   .delete(teacherController.deleteTeacher);
 
 module.exports = router;
