@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const teacherSchema = new mongoose.Schema({
+  googleId: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: [true, "Um professor precisa ter um nome!"],
