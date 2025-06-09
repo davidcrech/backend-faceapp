@@ -6,7 +6,8 @@ const router = express.Router();
 router
   .route("/")
   .get(teacherController.getAllTeachers)
-  .post(teacherController.createTeacher);
+  .post(teacherController.createTeacher)
+  .delete(teacherController.deleteAllTeachers);
 
 router
   .route("/:id")

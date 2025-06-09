@@ -28,7 +28,7 @@ exports.googleLogin = async (req, res) => {
       expiresIn: "1d",
     });
 
-    res.json({ token, user: { name: payload.name, email: payload.email } });
+    res.json({ token, user: { name: payload.name, email: payload.email,id: teacher._id } });
   } catch (err) {
     console.error(err);
     res.status(401).json({ error: "Token inválido" });

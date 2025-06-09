@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "Classroom",
   },
+  image: {
+    type: String,
+    required: [true, "Um usuário tem que ter uma foto do rosto!"],
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
