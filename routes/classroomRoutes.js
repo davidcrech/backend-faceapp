@@ -3,8 +3,15 @@ const classroomController = require("../controllers/classroomController");
 
 const router = new express.Router();
 
-router.route("/").get(classroomController.getClassroom);
-router.route("/CreateOne").post(classroomController.createClass);
-router.route("/:classroomId").get(classroomController.getOneClassroom);
+router
+  .route("/")
+  .get(classroomController.getClassroom)
+  .post(classroomController.createClass);
+
+router
+  .route("/:id")
+  .get(classroomController.getOneClassroom)
+  .patch(classroomController.updateClass)
+  .delete(classroomController.deleteClass);
 
 module.exports = router;
