@@ -16,6 +16,7 @@ mongoose
 app.get("/", (req, res) => res.send("Teste"));
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+
+app.listen(PORT, "0.0.0.0",() => {
   console.log(`server running on ${PORT}`);
 });
