@@ -18,16 +18,13 @@ const upload = multer({
   },
 });
 
-// Middleware to handle multiple student files
 const handleStudentUploads = (req, res, next) => {
   const fields = [];
 
-  // Predefine up to 50 students
   for (let i = 0; i < 50; i++) {
     fields.push({ name: `students[${i}][image]`, maxCount: 1 });
   }
 
-  // Add static fields
   fields.push({ name: "teacherId", maxCount: 1 });
   fields.push({ name: "className", maxCount: 1 });
 
@@ -50,7 +47,6 @@ const handleStudentUploads = (req, res, next) => {
         });
       }
 
-      // Ensure students is an array
       const studentArray = Array.isArray(students) ? students : [students];
 
       const parsedStudents = [];

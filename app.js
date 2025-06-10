@@ -7,6 +7,7 @@ dotenv.config();
 const classroomRouter = require("./routes/classroomRoutes");
 const userRouter = require("./routes/userRoutes");
 const teacherRouter = require("./routes/teacherRoutes");
+const rollRouter = require("./routes/rollRoutes");
 const authRouter = require("./routes/authRoutes");
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(
 app.use("/api/v1/Classrooms", classroomRouter);
 app.use("/api/v1/Users", userRouter);
 app.use("/api/v1/Teachers", teacherRouter);
+app.use("/api/v1/Rolls", rollRouter);
 app.use("/api/auth", authRouter);
 
 module.exports = app;
