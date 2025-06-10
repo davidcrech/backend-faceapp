@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const errorHandling = require("./middlewares/errorHandling");
 
 dotenv.config();
 
@@ -25,5 +26,8 @@ app.use("/api/v1/Users", userRouter);
 app.use("/api/v1/Teachers", teacherRouter);
 app.use("/api/v1/Rolls", rollRouter);
 app.use("/api/auth", authRouter);
+
+app.use(errorHandling.notFound);
+app.use(errorHandling.errorHandler);
 
 module.exports = app;
