@@ -1,18 +1,17 @@
 const express = require("express");
 const rollController = require("../controllers/rollController");
-const authController = require("../controllers/authController"); // Assuming authentication middleware
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
-
 router
   .route("/")
-  .get(rollController.getAllRolls) 
+  .get(rollController.getAllRolls)
   .post(rollController.createRoll)
-  .delete(rollController.deleteAll)
+  .delete(rollController.deleteAll);
 
-  router
-  .route('/classroom-teacher')
+router
+  .route("/classroom-teacher")
   .get(rollController.getRollsByClassroomAndTeacher);
 
 router

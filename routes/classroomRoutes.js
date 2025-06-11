@@ -1,7 +1,8 @@
 const express = require("express");
 const classroomController = require("../controllers/classroomController");
-const multer = require('multer');
-const router = express.Router(); // Use express.Router() directly
+const multer = require("multer");
+
+const router = express.Router();
 
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -38,8 +39,8 @@ const handleStudentUploads = (req, res, next) => {
 
     try {
       const { teacherId, className, students } = req.body;
-      console.log("req.body")
-      console.log(req.body)
+      console.log("req.body");
+      console.log(req.body);
       if (!teacherId || !className || !students) {
         return res.status(400).json({
           status: "fail",
@@ -83,7 +84,7 @@ const handleStudentUploads = (req, res, next) => {
           message: "No valid students provided",
         });
       }
-      
+
       console.log("INFO");
       req.parsedData = {
         teacherId,
@@ -102,20 +103,21 @@ const handleStudentUploads = (req, res, next) => {
   });
 };
 
-
 router
   .route("/")
   .get(classroomController.getClassroom)
   .post(classroomController.createClass)
   .delete(classroomController.deleteAllClasses);
-  
-router.route("/createWithImages")
-  .post(handleStudentUploads,classroomController.createWithImages)
 
-router.route("/byTeacher/:teacherId/")
-  .get(classroomController.getClassroomsByTeacherId)
+router
+  .route("/createWithImages")
+  .post(handleStudentUploads, classroomController.createWithImages);
 
-  router
+router
+  .route("/byTeacher/:teacherId/")
+  .get(classroomController.getClassroomsByTeacherId);
+
+router
   .route("/:id")
   .get(classroomController.getOneClassroom)
   .patch(classroomController.updateClass)

@@ -17,5 +17,5 @@ module.exports = async function uploadToS3(buffer, mimetype) {
   };
 
   const data = await s3.upload(uploadParams).promise();
-  return data.Location; 
+  return data.Location;
 };
