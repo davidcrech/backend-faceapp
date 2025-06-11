@@ -23,6 +23,9 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:3000",
   "https://master.d3luxg79ga6mfb.amplifyapp.com",
+  "https://master.d3luxg79ga6mfb.amplifyapp.com/",
+  "http://master.d3luxg79ga6mfb.amplifyapp.com/",
+  "https://master.d3luxg79ga6mfb.amplifyapp.com",
 ];
 
 // CORS configuration
