@@ -6,7 +6,7 @@ exports.createRoll = catchAsync(async (req, res, next) => {
     classroom: req.body.classroom,
     teacher: req.body.teacher,
     date: req.body.date || Date.now(),
-    students: req.body.students || [], 
+    students: req.body.students || [],
   });
 
   res.status(201).json({
@@ -17,36 +17,34 @@ exports.createRoll = catchAsync(async (req, res, next) => {
   });
 });
 
-
 exports.deleteAll = catchAsync(async (req, res, next) => {
-    await Roll.deleteMany({})
-  
-    res.status(201).json({
-      status: "success"
-    });
+  await Roll.deleteMany({});
+
+  res.status(201).json({
+    status: "success",
   });
+});
 
 exports.getRollsByClassroomAndTeacher = catchAsync(async (req, res, next) => {
-    const { classroom, teacher } = req.query;
-  
-    if (!classroom || !teacher) {
-      return res.status(400).json({
-        status: "fail",
-        message: "Please provide both classroom and teacher in query parameters."
-      });
-    }
-  
-    const rolls = await Roll.find({ classroom, teacher });
-  
-    res.status(200).json({
-      status: "success",
-      results: rolls.length,
-      data: {
-        rolls,
-      },
-    });
-  });
+  const { classroom, teacher } = req.query;
 
+  if (!classroom || !teacher) {
+    return res.status(400).json({
+      status: "fail",
+      message: "Please provide both classroom and teacher in query parameters.",
+    });
+  }
+
+  const rolls = await Roll.find({ classroom, teacher });
+
+  res.status(200).json({
+    status: "success",
+    results: rolls.length,
+    data: {
+      rolls,
+    },
+  });
+});
 
 exports.getAllRolls = catchAsync(async (req, res, next) => {
   const rolls = await Roll.find();
