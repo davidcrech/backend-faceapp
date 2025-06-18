@@ -2,7 +2,7 @@ const handlerFactory = require("../utils/handlerFactory");
 const catchAsync = require("../utils/catchAsync");
 const Classroom = require("../models/classroomModel");
 
-exports.getClassroomsByTeacherId = exports.getClassroomsByTeacherId = (Model) =>
+exports.getClassroomsByTeacherId = (Model) =>
   catchAsync(async (req, res, next) => {
     const teacherId = req.params.teacherId;
 
@@ -21,7 +21,7 @@ exports.getClassroomsByTeacherId = exports.getClassroomsByTeacherId = (Model) =>
     });
   });
 
-exports.createWithImages = exports.createWithImages = (Model) =>
+exports.createWithImages = (Model) =>
   catchAsync(async (req, res, next) => {
     const {
       teacherId,
