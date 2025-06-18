@@ -2,7 +2,7 @@ const handlerFactory = require("../utils/handlerFactory");
 const catchAsync = require("../utils/catchAsync");
 const Classroom = require("../models/classroomModel");
 
-exports.getClassroomsByTeacherId = (Model) =>
+exports.getClassroomsByTeacherId = (Classroom) =>
   catchAsync(async (req, res, next) => {
     const teacherId = req.params.teacherId;
 
@@ -13,7 +13,7 @@ exports.getClassroomsByTeacherId = (Model) =>
       });
     }
 
-    const data = await Model.find({ teacher: teacherId });
+    const data = await Classroom.find({ teacher: teacherId });
 
     return res.status(200).json({
       status: "success",
@@ -21,7 +21,7 @@ exports.getClassroomsByTeacherId = (Model) =>
     });
   });
 
-exports.createWithImages = (Model) =>
+exports.createWithImages = (Classroom) =>
   catchAsync(async (req, res, next) => {
     const {
       teacherId,
@@ -35,7 +35,7 @@ exports.createWithImages = (Model) =>
       );
     }
 
-    const classroom = await Model.create({
+    const classroom = await Classroom.create({
       name: className,
       teacher: teacherId,
       students: [],
@@ -68,7 +68,7 @@ exports.createWithImages = (Model) =>
     classroom.students = createdStudents.map((s) => s._id);
     await classroom.save();
 
-    const populatedClassroom = await Model.findById(classroom._id)
+    const populatedClassroom = await Classroom.findById(classroom._id)
       .populate("teacher")
       .populate("students");
 
