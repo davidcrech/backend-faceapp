@@ -1,6 +1,6 @@
 const express = require("express");
 const classroomController = require("../controllers/classroomController");
-const handleStudentUploads = require("../middlewares/uploadHandling");
+const { handleStudentUploads } = require("../middlewares/uploadHandling");
 
 const router = express.Router();
 
